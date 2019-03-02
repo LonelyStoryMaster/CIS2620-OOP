@@ -40,13 +40,15 @@ public class Lottery {
             bool samePoses = false;
             for (int i = 0; i < userNum.Length; i++) {
                 samePoses = (userNum[i] == genNum[i]);
+                if (!samePoses) {
+                    winAmount = winAmounts[3];
+                    WriteLine("You have all three numbers matching but they aren't in the right place");
+                    break;
+                }
             }
             if (samePoses) {
                 winAmount = winAmounts[4];
                 WriteLine("You have picked the exact matching number");
-            } else {
-                winAmount = winAmounts[3];
-                WriteLine("You have all three numbers matching but they aren't in the right place");
             }
         } else if (checkDoubles(userNum, genNum)) {
             winAmount = winAmounts[2];
@@ -63,9 +65,9 @@ public class Lottery {
     }
 
     static bool checkDoubles(int[] setOne, int[] setTwo) {
-        return ((setTwo.Contains(setOne[0]) && setTwo.Contains(setOne[1])) ||
-                (setTwo.Contains(setOne[0]) && setTwo.Contains(setOne[2])) ||
-                (setTwo.Contains(setOne[1]) && setTwo.Contains(setOne[2])));
+        return (((setOne[0] == setTwo[0]) && (setOne[1] == setTwo[1])) ||
+                ((setOne[0] == setTwo[0]) && (setOne[2] == setTwo[2])) ||
+                ((setOne[1] == setTwo[1]) && (setOne[2] == setTwo[2])));
     }
 
     static bool checkTriple(int[] setOne, int[] setTwo) {
