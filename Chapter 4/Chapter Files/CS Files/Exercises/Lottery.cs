@@ -7,6 +7,7 @@ public class Lottery {
         int[] user = getUserNum();
         int[] actual = generateNum();
         calcWinAmount(user, actual);
+        ReadLine();
     }
 
     static int[] getUserNum() {
